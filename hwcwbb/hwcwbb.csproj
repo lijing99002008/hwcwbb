@@ -89,9 +89,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bll\Base_Bll.cs" />
+    <Compile Include="Bll\out_record_ljy_bll.cs" />
     <Compile Include="Context\hwcwbb_Context.cs" />
     <Compile Include="Dal\Base_Dal.cs" />
     <Compile Include="Dal\DataBase_Dal.cs" />
+    <Compile Include="Dal\Out_record_jg_ljy_Dal.cs" />
     <Compile Include="Dal\Out_record_ljy_Dal.cs" />
     <Compile Include="hwcw_exceltosql.cs">
       <SubType>Form</SubType>

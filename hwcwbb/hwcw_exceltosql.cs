@@ -48,7 +48,15 @@ namespace hwcwbb
             dt_Excel1 = Helper.Excel.Excel_Export.ExcelToDataTable("出库明细账$");
             dt_Excel2 = Helper.Excel.Excel_Export.ExcelToDataTable("入库明细账$");
 
-            
+            List<out_record_ljy> out_record_ljy1_list = new List<out_record_ljy>();
+            List<out_record_ljy> out_record_ljy2_list = new List<out_record_ljy>();
+
+            out_record_ljy1_list = Helper.Transformation.Transformation.DataConvert.DataTableToList<out_record_ljy>(dt_Excel1).ToList();
+            out_record_ljy2_list = Helper.Transformation.Transformation.DataConvert.DataTableToList<out_record_ljy>(dt_Excel2).ToList();
+
+
+
+
 
         }
     }

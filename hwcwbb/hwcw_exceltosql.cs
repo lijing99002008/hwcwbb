@@ -8,10 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Helper;
+using System.Threading;
+
 namespace hwcwbb
 {
     public partial class hwcw_exceltosql : Form
     {
+        public List<int> Sum = new List<int>();
+        public delegate int addProgress(int i);
         public hwcw_exceltosql()
         {
             InitializeComponent();
@@ -42,22 +46,50 @@ namespace hwcwbb
 
         private void Button35_Click(object sender, EventArgs e)
         {
-            DataTable dt_Excel1 = new DataTable();
-            DataTable dt_Excel2 = new DataTable();
+            Thread progressthread = new Thread(new ParameterizedThreadStart(thread));
 
-            dt_Excel1 = Helper.Excel.Excel_Export.ExcelToDataTable("出库明细账$");
-            dt_Excel2 = Helper.Excel.Excel_Export.ExcelToDataTable("入库明细账$");
+            progressthread.Start();
 
-            List<out_record_ljy> out_record_ljy1_list = new List<out_record_ljy>();
-            List<out_record_ljy> out_record_ljy2_list = new List<out_record_ljy>();
+            //DataTable dt_Excel1 = new DataTable();
+            //DataTable dt_Excel2 = new DataTable();
 
-            out_record_ljy1_list = Helper.Transformation.Transformation.DataConvert.DataTableToList<out_record_ljy>(dt_Excel1).ToList();
-            out_record_ljy2_list = Helper.Transformation.Transformation.DataConvert.DataTableToList<out_record_ljy>(dt_Excel2).ToList();
+            //dt_Excel1 = Helper.Excel.Excel_Export.ExcelToDataTable("出库明细账$");
+            //dt_Excel2 = Helper.Excel.Excel_Export.ExcelToDataTable("入库明细账$");
 
+            //Bll.out_record_ljy_bll out_record_ljy_bll = new Bll.out_record_ljy_bll();
 
+            //if (out_record_ljy_bll.exceltodatatable(dt_Excel1, dt_Excel2)=="ok")
+            //{
 
+            //}
+            label1.Text = Sum.Count().ToString();
+        }
+        public void thread(object length)
+        {
+            bool a = true;
+            progressForm progress = new progressForm();
 
+            progress.Show();
+            addProgress pro = add;
+
+            for (int i = 0; i < 100; i++)
+            {
+                IAsyncResult asyncResult = pro.BeginInvoke(i, null, null);
+                while (!asyncResult.IsCompleted)
+                {
+                    Thread.Sleep(100);
+                }
+                //progress.Addprogess();
+                progress.labletxt(pro.EndInvoke(asyncResult));
+            }
 
         }
+        public int add(int i)
+        {
+            Sum.Add(i);
+
+            return Sum.Count();
+        }
+
     }
 }

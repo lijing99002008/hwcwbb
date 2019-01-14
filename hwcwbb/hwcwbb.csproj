@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -93,7 +97,9 @@
     <Compile Include="Bll\out_record_ljy_bll.cs" />
     <Compile Include="Context\hwcwbb_Context.cs" />
     <Compile Include="Dal\Base_Dal.cs" />
+    <Compile Include="Dal\Cost_unit_price_ljy_Dal.cs" />
     <Compile Include="Dal\DataBase_Dal.cs" />
+    <Compile Include="Dal\out_record_date_ljy_Dal.cs" />
     <Compile Include="Dal\Out_record_jg_ljy_Dal.cs" />
     <Compile Include="Dal\Out_record_ljy_Dal.cs" />
     <Compile Include="hwcw_exceltosql.cs">
@@ -108,15 +114,26 @@
     <Compile Include="hwcw_master.Designer.cs">
       <DependentUpon>hwcw_master.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Cost_unit_price_ljy.cs" />
+    <Compile Include="Model\out_record_date_ljy.cs" />
     <Compile Include="Model\out_record_jg_ljy.cs" />
     <Compile Include="Model\out_record_ljy.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="progressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="progressForm.Designer.cs">
+      <DependentUpon>progressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="hwcw_exceltosql.resx">
       <DependentUpon>hwcw_exceltosql.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="hwcw_master.resx">
       <DependentUpon>hwcw_master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="progressForm.resx">
+      <DependentUpon>progressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

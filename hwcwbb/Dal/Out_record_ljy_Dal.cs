@@ -73,5 +73,57 @@ namespace hwcwbb.Dal
 
         #endregion 修改打印中间表记录
 
+        #region 删除表记录
+
+        /// <summary>
+        /// 按照工单号删除PLM接口中间表中订单信息表的行
+        /// </summary>
+        /// <param name="Job_No">工单号</param>
+        public void DeleteList(List<out_record_ljy> out_record_ljy_list)
+        {
+
+            foreach (out_record_ljy item in out_record_ljy_list)
+            {
+                db.out_record_ljy_Model.Remove(item);
+
+                db.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+
+                //db.Entry(item).Property("input_date").IsModified = false; //如果修改时不修改这个字段，不过在新建时没有用
+            }
+
+        }
+
+        #endregion
+
+        #region 查询表记录
+
+        /// <summary>
+        /// 查询表记录最后一行
+        /// </summary>
+        /// <returns></returns>
+        public out_record_ljy GetLastLineList()
+        {
+            out_record_ljy out_record_ljy = new out_record_ljy();
+
+            out_record_ljy = db.out_record_ljy_Model.OrderByDescending(c=> c.in_time).ToList()[0];
+
+            return out_record_ljy;
+        }
+
+        /// <summary>
+        /// 按账期查询表记录
+        /// </summary>
+        /// <returns></returns>
+        public List<out_record_ljy> GetList(string year, string moon)
+        {
+            List<out_record_ljy> out_record_ljy_list = new List<out_record_ljy>();
+
+            out_record_ljy_list = db.out_record_ljy_Model.Where(p => p.year == year && p.moon == moon).ToList();
+
+            return out_record_ljy_list;
+        }
+
+        #endregion
+
     }
 }

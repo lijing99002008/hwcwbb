@@ -63,6 +63,7 @@
             this.toolStripButton5.Size = new System.Drawing.Size(43, 44);
             this.toolStripButton5.Text = "刷新";
             this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // toolStripButton3
             // 
@@ -72,6 +73,7 @@
             this.toolStripButton3.Size = new System.Drawing.Size(43, 44);
             this.toolStripButton3.Text = "查询";
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton4
             // 
@@ -81,6 +83,7 @@
             this.toolStripButton4.Size = new System.Drawing.Size(43, 44);
             this.toolStripButton4.Text = "保存";
             this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripButton6
             // 

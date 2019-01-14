@@ -27,6 +27,10 @@ namespace hwcwbb.Context
 
         public DbSet<out_record_ljy> out_record_ljy_Model { get; set; }
 
+        public DbSet<out_record_date_ljy> out_record_date_ljy_Model { get; set; }
+
+        public DbSet<Cost_unit_price_ljy> cost_unit_price_ljy_model { get; set; }
+
 
         #region 解密后得到连接字符串
         /// <summary>
@@ -42,7 +46,7 @@ namespace hwcwbb.Context
 
             //string name=ConfigurationSettings.AppSettings["connectionString"];
 
-            string name = System.Configuration.ConfigurationManager.AppSettings["LectraPLM_PicMonitor_Service_Context"];
+            string name = System.Configuration.ConfigurationManager.AppSettings["MesStationErpContext"];
             string connstr = Helper.DEncrypt.Security.DecryptDES(name);
 
             return connstr;
